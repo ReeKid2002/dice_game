@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DICE GAME</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Fredoka+One&family=Lobster&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="icon" href="image/dice.png">
+    <style>
+        body{
+            background-color: #283149;
+        }
+        .heading{
+            text-align: center;
+            font-size: 100px;
+            font-family: 'Lobster', cursive;
+            color: aliceblue;
+            padding-top: 30px;
+        }
+        .result{
+            font-size: 50px;
+            font-family: 'DotGothic16', sans-serif;
+            color: aliceblue;
+        }
+        .hiding_class_effect{
+            visibility: hidden;
+        }
+        .creator{
+            font-family: 'Fredoka One', cursive;
+            color: aliceblue;
+            font-size: 60px;
+        }
+        /* BUTTON BY RAJVEER: https://rvk1605.github.io/Portfolio/ 
+        .btn{
+            cursor: pointer;
+        outline: none;
+        margin-top: 30px;
+        padding: 10px;
+        width: 110px;
+        border-radius: 25px;
+        } */
+    </style>
+</head>
+<body>
+    <div style="padding-top: 10px; padding-bottom: 60px;">
+        <h1 class="heading"><em>Welcome To Dice Game</em></h1>
+    </div>
+    <div style="text-align: center; padding-bottom: 50px; ">
+        <span style="padding-right:40px;">
+            <img class="dice1" style="height: 200px; width: 200px;" src="image/dice6.png" alt="DICE 6">
+        </span>
+        <span style="padding-left: 40px;">
+            <img class="dice2" style="height: 200px; width: 200px;" src="image/dice6.png" alt="DICE 6">
+        </span>
+    </div>
+    <div style="text-align: center; padding-bottom: 30px;" class="result">
+        <h1 class="result">Start</h1>
+    </div>
+    <div style="text-align: center; padding-bottom: 70px;">
+        <button type="button" style="font-size: 25px; font-family: 'Righteous', cursive;" class="btn btn-danger" class="btn1">ROLL</button>
+    </div>
+    <script>
+        function rolldice(){
+            let array = ["image/dice1.png","image/dice2.png","image/dice3.png","image/dice4.png","image/dice5.png","image/dice6.png"];
+            let dice_1_result = Math.floor(Math.random() * 6);
+            let dice_2_result = Math.floor(Math.random() * 6);
+            console.log(dice_1_result);
+            console.log(dice_2_result);
+            if(dice_1_result<dice_2_result){
+                document.querySelector(".dice1").setAttribute("src",array[dice_1_result]);
+                document.querySelector(".dice2").setAttribute("src",array[dice_2_result]);
+                document.querySelector(".result h1").textContent = "Player 2 Win!";
+            }
+            else if(dice_1_result>dice_2_result){
+                document.querySelector(".dice1").setAttribute("src",array[dice_1_result]);
+                document.querySelector(".dice2").setAttribute("src",array[dice_2_result]);
+                document.querySelector(".result h1").textContent = "Player 1 Win!";
+            }
+            else{
+                document.querySelector(".dice1").setAttribute("src",array[dice_1_result]);
+                document.querySelector(".dice2").setAttribute("src",array[dice_2_result]);
+                document.querySelector(".result h1").textContent = "Draw";
+            }
+        }
+        let roll_on = document.querySelector("button");
+        roll_on.addEventListener("click",rolldice);
+        function hide_effect(){
+            document.querySelector(".result h1").classList.toggle("hiding_class_effect");
+        }
+        setInterval(hide_effect,500);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <footer style="text-align: center; padding-bottom: 30px;">
+        <h1 class="creator">Made by</h1> 
+        <a href="https://reekid2002.github.io/Personal_Page/index.html" target="_blank"><img style="height: 150px; width: 150px; text-align: center;" src="image/boy.png" alt="Made By"></a>
+    </footer>
+</body>
+</html>
